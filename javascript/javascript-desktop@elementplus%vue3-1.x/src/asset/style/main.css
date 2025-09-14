@@ -1,0 +1,50 @@
+:root {
+  /* Background */
+  --color-background: #04181f;
+  --color-backdrop: #20294c;
+
+  /* Text */
+  --color-text-primary: #f3f3f3;
+  --color-text-secondary: #6B6C83;
+  --color-text-tertiary: #96a0b4;
+  --color-text-info: #7abeff;
+  --color-text-success: #9cf7a7;
+  --color-text-warning: #ffc97b;
+  --color-text-error: #f89b9b;
+
+  /* Borders */
+  --color-border-primary: #575758;
+  --color-border-secondary: #4c4c4c;
+  --color-border-tertiary: #303030;
+
+  /* Dividers */
+  --color-divider-primary: #303030;
+  --color-divider-secondary: #575758;
+
+  /* State */
+  --color-disabled: #445866;
+
+  /* Semantic Colors */
+  --color-primary: #5c98f1;
+  --color-error: #f35959;
+  --color-warning: #fab246;
+  --color-success: #5cf76e;
+  --color-info: #469af9;
+  /* Fatal, Critical, Major, High, Moderate, Low  are intentionally omitted as they were nil in the source */
+
+  /* Surface (Backgrounds of elements) */
+  --color-surface-primary: #04181f;
+  --color-surface-secondary: #0a1e2c;
+  --color-surface-tertiary: #032331;
+  --color-surface-error: #c30c0b;
+  --color-surface-warning: #a3671c;
+  --color-surface-success: #0cc221;
+  --color-surface-info: #0e53b3;
+
+  /* Grey Scale */
+  --color-grey-darker: #676b89;
+  --color-grey-dark: #c7cbdb;
+  --color-grey-default: #dddfdd;
+  --color-grey-light: #dce1e9;
+  --color-grey-lighter: #f0f1f4;
+}

@@ -1,0 +1,1195 @@
+<#assign modules = {}>
+<#assign navigables = []>
+<#list app.pages as page>
+  <#if page.options["navigable"]?? && page.options["navigable"] == "true">
+    <#assign navigables += [page]>
+  </#if>
+  <#assign strs = page.id?split("/")>
+  <#if (strs?size >= 3)>
+    <#assign modules += {strs[0]:strs[0]}>
+  </#if>
+</#list>
+
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+    SRC000000000000000000B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = SRC000000000000000000B01 /* main.m */; };
+		SRC000000000000000000B02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = SRC000000000000000000B02 /* AppDelegate.m */; };
+		AAD1D9382B94F2FE0023ACDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1D9372B94F2FE0023ACDB /* SceneDelegate.m */; };
+		AAD1D93B2B94F2FE0023ACDB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1D93A2B94F2FE0023ACDB /* ViewController.m */; };
+		AAD1D93E2B94F2FE0023ACDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD1D93C2B94F2FE0023ACDB /* Main.storyboard */; };
+		AAD1D9402B94F3000023ACDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD1D93F2B94F3000023ACDB /* Assets.xcassets */; };
+		AAD1D9432B94F3000023ACDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD1D9412B94F3000023ACDB /* LaunchScreen.storyboard */; };
+		AB00000000000000000M0001 /* Screens.m in Util */ = {isa = PBXBuildFile; fileRef = AF00000000000000000M0001 /* Screens.m */; };
+		AB00000000000000000M0002 /* Themes.m in Util */ = {isa = PBXBuildFile; fileRef = AF00000000000000000M0002 /* Themes.m */; };
+<#list app.usecases as usecase>
+	<#assign page = usecase.page>
+		AB000000000000000M${(usecase?index + 1)?string?left_pad(6, '0')} /* ${objc.nameType(page.id)}ViewController.m in VC */ = {isa = PBXBuildFile; fileRef = AF000000000000000M${(usecase?index + 1)?string?left_pad(6, '0')} /* ${objc.nameType(page.id)}ViewController.m */; };
+</#list>
+		/*************************/
+		/* NYAlertViewController */
+		/*************************/
+		088768A621572405004F427E /* NYAlertViewPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088768A521572405004F427E /* NYAlertViewPresentationController.m */; };
+		088768A9215725FC004F427E /* NYAlertViewPresentationAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088768A8215725FC004F427E /* NYAlertViewPresentationAnimationController.m */; };
+		088768AC2157263F004F427E /* NYAlertViewDismissalAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088768AB2157263F004F427E /* NYAlertViewDismissalAnimationController.m */; };
+		088768AE215726E3004F427E /* NYAlertViewControllerTransitionStyle.h in Sources */ = {isa = PBXBuildFile; fileRef = 088768AD215726E3004F427E /* NYAlertViewControllerTransitionStyle.h */; };
+		088768B3215727E9004F427E /* NYAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 088768B2215727E9004F427E /* NYAlertAction.m */; };
+		088768B7215733AA004F427E /* NYAlertViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 088768B6215733AA004F427E /* NYAlertViewButton.m */; };
+		0896996B215F13FD00009662 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0896996A215F13FD00009662 /* UIView+Additions.m */; };
+		08969971215F1D5D00009662 /* NYAlertTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08969970215F1D5D00009662 /* NYAlertTextView.m */; };
+		08969974215F1F0E00009662 /* NYAlertViewControllerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08969973215F1F0E00009662 /* NYAlertViewControllerConfiguration.m */; };
+		08AF2871216A758A0070DA8E /* NYAlertActionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08AF2870216A758A0070DA8E /* NYAlertActionConfiguration.m */; };
+		
+		/**************/
+		/* FSCalendar */
+		/**************/
+		30B0BAD01B8D8E23004B9476 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC01B8D8E22004B9476 /* FSCalendar.m */; };
+		30B0BAD11B8D8E23004B9476 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC21B8D8E22004B9476 /* FSCalendarAppearance.m */; };
+		30B0BAD21B8D8E23004B9476 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC41B8D8E22004B9476 /* FSCalendarCell.m */; };
+		30B0BAD31B8D8E23004B9476 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC71B8D8E22004B9476 /* FSCalendarHeaderView.m */; };
+		30B0BAF61B8D9AC1004B9476 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC21B8D8E22004B9476 /* FSCalendarAppearance.m */; };
+		30B0BAF71B8D9AC1004B9476 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC41B8D8E22004B9476 /* FSCalendarCell.m */; };
+		30B0BAF81B8D9AC1004B9476 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC71B8D8E22004B9476 /* FSCalendarHeaderView.m */; };
+		30CEF9011C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CEF8FF1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m */; };
+		30CEF9021C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CEF8FF1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m */; };
+		30D55B101C90240000BB43D5 /* HidePlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D55B0F1C90240000BB43D5 /* HidePlaceholderViewController.m */; };
+		30DBE3C61DC641AD005A22B7 /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DBE3C31DC641AD005A22B7 /* FSCalendarCalculator.m */; };
+		30F4C9111E07C12B00D2EC4D /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4C90E1E07C12B00D2EC4D /* FSCalendarDelegationFactory.m */; };
+		30F5D8561B9FC33400C1C201 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0BAC01B8D8E22004B9476 /* FSCalendar.m */; };
+		30FCB3981BAAD112002B87AD /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FCB3951BAAD112002B87AD /* FSCalendarStickyHeader.m */; };
+		50F2ADEA216D954A00CC481F /* FSCalendarSeparatorDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F2ADE7216D954A00CC481F /* FSCalendarSeparatorDecorationView.m */; };
+		3055B1C41DA9323A002AFA13 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3055B1C11DA9323A002AFA13 /* FSCalendarExtensions.m */; };
+		3092253C1B905C4300123031 /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 309225391B905C4300123031 /* FSCalendarConstants.m */; };
+		301F79CD1DFD39E700D8631E /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 301F79CA1DFD39E700D8631E /* FSCalendarDelegationProxy.m */; };
+		30A495561DCAD9E6000B2F31 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A495531DCAD9E6000B2F31 /* FSCalendarWeekdayView.m */; };
+		309539911C38D66C00BD37AA /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3095398E1C38D66C00BD37AA /* FSCalendarCollectionViewLayout.m */; };
+		EEC9C03B1BDC9E7000383A07 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC9C0381BDC9E7000383A07 /* FSCalendarCollectionView.m */; };
+
+		/*************/
+    /* MJREFRESH */
+    /*************/
+    MJREFRESHB00000000000001 /* UIScrollView+MJRefresh.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000001 /* UIScrollView+MJRefresh.m */; };
+    MJREFRESHB00000000000002 /* UICollectionViewLayout+MJRefresh.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000002 /* UICollectionViewLayout+MJRefresh.m */; };
+    MJREFRESHB00000000000003 /* MJRefreshConst.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000003 /* MJRefreshConst.m */; };
+    MJREFRESHB00000000000004 /* MJRefreshConfig.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000004 /* MJRefreshConfig.m */; };
+    MJREFRESHB00000000000033 /* UIScrollView+MJExtension.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000033 /* UIScrollView+MJExtension.m */; };
+    MJREFRESHB00000000000038 /* NSBundle+MJRefresh.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000038 /* NSBundle+MJRefresh.m */; };
+    MJREFRESHB00000000000039 /* UIView+MJExtension.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000039 /* UIView+MJExtension.m */; };
+    MJREFRESHB00000000000043 /* MJRefreshBackGifFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000043 /* MJRefreshBackGifFooter.m */; };
+    MJREFRESHB00000000000044 /* MJRefreshBackStateFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000044 /* MJRefreshBackStateFooter.m */; };
+    MJREFRESHB00000000000045 /* MJRefreshBackNormalFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000045 /* MJRefreshBackNormalFooter.m */; };
+    MJREFRESHB00000000000049 /* MJRefreshAutoStateFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000049 /* MJRefreshAutoStateFooter.m */; };
+    MJREFRESHB00000000000050 /* MJRefreshAutoGifFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000050 /* MJRefreshAutoGifFooter.m */; };
+    MJREFRESHB00000000000051 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000051 /* MJRefreshAutoNormalFooter.m */; };
+    MJREFRESHB00000000000053 /* MJRefreshStateTrailer.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000053 /* MJRefreshStateTrailer.m */; };
+    MJREFRESHB00000000000054 /* MJRefreshNormalTrailer.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000054 /* MJRefreshNormalTrailer.m */; };
+    MJREFRESHB00000000000056 /* MJRefreshNormalHeader.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000056 /* MJRefreshNormalHeader.m */; };
+    MJREFRESHB00000000000060 /* MJRefreshStateHeader.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000060 /* MJRefreshStateHeader.m */; };
+    MJREFRESHB00000000000061 /* MJRefreshGifHeader.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000061 /* MJRefreshGifHeader.m */; };
+    MJREFRESHB00000000000062 /* MJRefreshFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000062 /* MJRefreshFooter.m */; };
+    MJREFRESHB00000000000064 /* MJRefreshHeader.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000064 /* MJRefreshHeader.m */; };
+    MJREFRESHB00000000000067 /* MJRefreshBackFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000067 /* MJRefreshBackFooter.m */; };
+    MJREFRESHB00000000000068 /* MJRefreshAutoFooter.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000068 /* MJRefreshAutoFooter.m */; };
+    MJREFRESHB00000000000070 /* MJRefreshComponent.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000070 /* MJRefreshComponent.m */; };
+    MJREFRESHB00000000000073 /* MJRefreshTrailer.m */ = {isa = PBXBuildFile; fileRef = MJREFRESHM00000000000073 /* MJRefreshTrailer.m */; };
+
+		/***********/
+    /* MASONRY */
+    /***********/
+    MASONRYB0000000000000002 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000002 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+    MASONRYB0000000000000011 /* ViewController+MASAdditions.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000011 /* ViewController+MASAdditions.m */; };
+    MASONRYB0000000000000015 /* MASCompositeConstraint.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000015 /* MASCompositeConstraint.m */; };
+    MASONRYB0000000000000016 /* MASConstraintMaker.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000016 /* MASConstraintMaker.m */; };
+    MASONRYB0000000000000017 /* MASLayoutConstraint.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000017 /* MASLayoutConstraint.m */; };
+    MASONRYB0000000000000018 /* NSArray+MASAdditions.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000018 /* NSArray+MASAdditions.m */; };
+    MASONRYB0000000000000019 /* View+MASAdditions.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000019 /* View+MASAdditions.m */; };
+    MASONRYB0000000000000022 /* MASConstraint.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000022 /* MASConstraint.m */; };
+    MASONRYB0000000000000024 /* MASViewConstraint.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000024 /* MASViewConstraint.m */; };
+    MASONRYB0000000000000025 /* MASViewAttribute.m */ = {isa = PBXBuildFile; fileRef = MASONRYM0000000000000025 /* MASViewAttribute.m */; };
+
+		/****************/
+    /* REACTIVEOBJC */
+    /****************/
+    REACTIVEOBJCB00000000001 /* RACSerialDisposableSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000001 /* RACSerialDisposableSpec.m */; };
+    REACTIVEOBJCB00000000002 /* UIBarButtonItemRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000002 /* UIBarButtonItemRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000003 /* NSObjectRACDeallocatingSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000003 /* NSObjectRACDeallocatingSpec.m */; };
+    REACTIVEOBJCB00000000004 /* RACTestSchedulerSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000004 /* RACTestSchedulerSpec.m */; };
+    REACTIVEOBJCB00000000005 /* RACSubjectSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000005 /* RACSubjectSpec.m */; };
+    REACTIVEOBJCB00000000006 /* RACTestObject.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000006 /* RACTestObject.m */; };
+    REACTIVEOBJCB00000000007 /* RACSubscriberSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000007 /* RACSubscriberSpec.m */; };
+    REACTIVEOBJCB00000000008 /* NSUserDefaultsRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000008 /* NSUserDefaultsRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000010 /* NSObjectRACAppKitBindingsSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000010 /* NSObjectRACAppKitBindingsSpec.m */; };
+    REACTIVEOBJCB00000000011 /* RACKVOProxySpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000011 /* RACKVOProxySpec.m */; };
+    REACTIVEOBJCB00000000012 /* UIImagePickerControllerRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000012 /* UIImagePickerControllerRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000016 /* RACBlockTrampolineSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000016 /* RACBlockTrampolineSpec.m */; };
+    REACTIVEOBJCB00000000017 /* RACTargetQueueSchedulerSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000017 /* RACTargetQueueSchedulerSpec.m */; };
+    REACTIVEOBJCB00000000019 /* RACDisposableSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000019 /* RACDisposableSpec.m */; };
+    REACTIVEOBJCB00000000020 /* NSObjectRACPropertySubscribingSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000020 /* NSObjectRACPropertySubscribingSpec.m */; };
+    REACTIVEOBJCB00000000021 /* UIActionSheetRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000021 /* UIActionSheetRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000024 /* RACSubscriptingAssignmentTrampolineSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000024 /* RACSubscriptingAssignmentTrampolineSpec.m */; };
+    REACTIVEOBJCB00000000025 /* RACCompoundDisposableSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000025 /* RACCompoundDisposableSpec.m */; };
+    REACTIVEOBJCB00000000027 /* RACTupleSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000027 /* RACTupleSpec.m */; };
+    REACTIVEOBJCB00000000028 /* RACTestExampleScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000028 /* RACTestExampleScheduler.m */; };
+    REACTIVEOBJCB00000000029 /* RACStreamExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000029 /* RACStreamExamples.m */; };
+    REACTIVEOBJCB00000000030 /* RACSequenceAdditionsSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000030 /* RACSequenceAdditionsSpec.m */; };
+    REACTIVEOBJCB00000000031 /* RACSignalSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000031 /* RACSignalSpec.m */; };
+    REACTIVEOBJCB00000000032 /* UIButtonRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000032 /* UIButtonRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000033 /* NSURLConnectionRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000033 /* NSURLConnectionRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000034 /* RACKVOChannelSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000034 /* RACKVOChannelSpec.m */; };
+    REACTIVEOBJCB00000000035 /* NSNotificationCenterRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000035 /* NSNotificationCenterRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000036 /* RACEventSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000036 /* RACEventSpec.m */; };
+    REACTIVEOBJCB00000000037 /* RACSequenceSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000037 /* RACSequenceSpec.m */; };
+    REACTIVEOBJCB00000000038 /* RACSubscriberExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000038 /* RACSubscriberExamples.m */; };
+    REACTIVEOBJCB00000000039 /* RACTestUIButton.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000039 /* RACTestUIButton.m */; };
+    REACTIVEOBJCB00000000040 /* NSObjectRACPropertySubscribingExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000040 /* NSObjectRACPropertySubscribingExamples.m */; };
+    REACTIVEOBJCB00000000041 /* RACDelegateProxySpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000041 /* RACDelegateProxySpec.m */; };
+    REACTIVEOBJCB00000000042 /* NSEnumeratorRACSequenceAdditionsSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000042 /* NSEnumeratorRACSequenceAdditionsSpec.m */; };
+    REACTIVEOBJCB00000000043 /* NSObjectRACSelectorSignalSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000043 /* NSObjectRACSelectorSignalSpec.m */; };
+    REACTIVEOBJCB00000000044 /* RACControlCommandExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000044 /* RACControlCommandExamples.m */; };
+    REACTIVEOBJCB00000000045 /* UIAlertViewRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000045 /* UIAlertViewRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000047 /* RACChannelExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000047 /* RACChannelExamples.m */; };
+    REACTIVEOBJCB00000000048 /* RACSubclassObject.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000048 /* RACSubclassObject.m */; };
+    REACTIVEOBJCB00000000049 /* RACPropertySignalExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000049 /* RACPropertySignalExamples.m */; };
+    REACTIVEOBJCB00000000050 /* RACChannelSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000050 /* RACChannelSpec.m */; };
+    REACTIVEOBJCB00000000051 /* NSControllerRACSupportSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000051 /* NSControllerRACSupportSpec.m */; };
+    REACTIVEOBJCB00000000052 /* NSObjectRACLiftingSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000052 /* NSObjectRACLiftingSpec.m */; };
+    REACTIVEOBJCB00000000055 /* RACSchedulerSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000055 /* RACSchedulerSpec.m */; };
+    REACTIVEOBJCB00000000056 /* RACMulticastConnectionSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000056 /* RACMulticastConnectionSpec.m */; };
+    REACTIVEOBJCB00000000057 /* RACCommandSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000057 /* RACCommandSpec.m */; };
+    REACTIVEOBJCB00000000058 /* RACKVOWrapperSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000058 /* RACKVOWrapperSpec.m */; };
+    REACTIVEOBJCB00000000059 /* RACSequenceExamples.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000059 /* RACSequenceExamples.m */; };
+    REACTIVEOBJCB00000000060 /* NSStringRACKeyPathUtilitiesSpec.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000060 /* NSStringRACKeyPathUtilitiesSpec.m */; };
+    REACTIVEOBJCB00000000061 /* NSFileHandle+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000061 /* NSFileHandle+RACSupport.m */; };
+    REACTIVEOBJCB00000000064 /* NSNotificationCenter+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000064 /* NSNotificationCenter+RACSupport.m */; };
+    REACTIVEOBJCB00000000066 /* UIStepper+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000066 /* UIStepper+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000067 /* RACSubscriptionScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000067 /* RACSubscriptionScheduler.m */; };
+    REACTIVEOBJCB00000000069 /* RACStringSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000069 /* RACStringSequence.m */; };
+    REACTIVEOBJCB00000000071 /* NSObject+RACDescription.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000071 /* NSObject+RACDescription.m */; };
+    REACTIVEOBJCB00000000074 /* RACScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000074 /* RACScheduler.m */; };
+    REACTIVEOBJCB00000000075 /* UITableViewHeaderFooterView+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000075 /* UITableViewHeaderFooterView+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000077 /* RACSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000077 /* RACSignal.m */; };
+    REACTIVEOBJCB00000000078 /* UITableViewCell+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000078 /* UITableViewCell+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000079 /* UISwitch+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000079 /* UISwitch+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000080 /* RACTargetQueueScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000080 /* RACTargetQueueScheduler.m */; };
+    REACTIVEOBJCB00000000081 /* NSUserDefaults+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000081 /* NSUserDefaults+RACSupport.m */; };
+    REACTIVEOBJCB00000000085 /* NSEnumerator+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000085 /* NSEnumerator+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000086 /* RACIndexSetSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000086 /* RACIndexSetSequence.m */; };
+    REACTIVEOBJCB00000000089 /* UITextView+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000089 /* UITextView+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000090 /* RACStream.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000090 /* RACStream.m */; };
+    REACTIVEOBJCB00000000091 /* RACSignal+Operations.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000091 /* RACSignal+Operations.m */; };
+    REACTIVEOBJCB00000000097 /* RACGroupedSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000097 /* RACGroupedSignal.m */; };
+    REACTIVEOBJCB00000000099 /* RACTupleSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000099 /* RACTupleSequence.m */; };
+    REACTIVEOBJCB00000000100 /* MKAnnotationView+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000100 /* MKAnnotationView+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000103 /* EXTRuntimeExtensions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000103 /* EXTRuntimeExtensions.m */; };
+    REACTIVEOBJCB00000000106 /* RACChannel.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000106 /* RACChannel.m */; };
+    REACTIVEOBJCB00000000111 /* RACSignalSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000111 /* RACSignalSequence.m */; };
+    REACTIVEOBJCB00000000115 /* RACUnarySequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000115 /* RACUnarySequence.m */; };
+    REACTIVEOBJCB00000000116 /* RACEmptySequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000116 /* RACEmptySequence.m */; };
+    REACTIVEOBJCB00000000118 /* RACDynamicSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000118 /* RACDynamicSequence.m */; };
+    REACTIVEOBJCB00000000122 /* RACSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000122 /* RACSequence.m */; };
+    REACTIVEOBJCB00000000123 /* NSString+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000123 /* NSString+RACSupport.m */; };
+    REACTIVEOBJCB00000000127 /* NSURLConnection+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000127 /* NSURLConnection+RACSupport.m */; };
+    REACTIVEOBJCB00000000128 /* RACKVOTrampoline.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000128 /* RACKVOTrampoline.m */; };
+    REACTIVEOBJCB00000000129 /* RACSubscriptingAssignmentTrampoline.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000129 /* RACSubscriptingAssignmentTrampoline.m */; };
+    REACTIVEOBJCB00000000130 /* NSOrderedSet+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000130 /* NSOrderedSet+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000134 /* UIImagePickerController+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000134 /* UIImagePickerController+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000136 /* RACReplaySubject.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000136 /* RACReplaySubject.m */; };
+    REACTIVEOBJCB00000000137 /* UIControl+RACSignalSupportPrivate.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000137 /* UIControl+RACSignalSupportPrivate.m */; };
+    REACTIVEOBJCB00000000138 /* NSObject+RACDeallocating.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000138 /* NSObject+RACDeallocating.m */; };
+    REACTIVEOBJCB00000000140 /* RACErrorSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000140 /* RACErrorSignal.m */; };
+    REACTIVEOBJCB00000000142 /* RACArraySequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000142 /* RACArraySequence.m */; };
+    REACTIVEOBJCB00000000143 /* RACBlockTrampoline.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000143 /* RACBlockTrampoline.m */; };
+    REACTIVEOBJCB00000000146 /* RACKVOChannel.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000146 /* RACKVOChannel.m */; };
+    REACTIVEOBJCB00000000148 /* NSObject+RACPropertySubscribing.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000148 /* NSObject+RACPropertySubscribing.m */; };
+    REACTIVEOBJCB00000000150 /* RACBehaviorSubject.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000150 /* RACBehaviorSubject.m */; };
+    REACTIVEOBJCB00000000151 /* NSData+RACSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000151 /* NSData+RACSupport.m */; };
+    REACTIVEOBJCB00000000152 /* RACMulticastConnection.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000152 /* RACMulticastConnection.m */; };
+    REACTIVEOBJCB00000000155 /* UIBarButtonItem+RACCommandSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000155 /* UIBarButtonItem+RACCommandSupport.m */; };
+    REACTIVEOBJCB00000000156 /* UICollectionReusableView+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000156 /* UICollectionReusableView+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000157 /* UIDatePicker+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000157 /* UIDatePicker+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000159 /* RACEvent.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000159 /* RACEvent.m */; };
+    REACTIVEOBJCB00000000160 /* RACScopedDisposable.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000160 /* RACScopedDisposable.m */; };
+    REACTIVEOBJCB00000000161 /* RACDynamicSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000161 /* RACDynamicSignal.m */; };
+    REACTIVEOBJCB00000000164 /* NSControl+RACCommandSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000164 /* NSControl+RACCommandSupport.m */; };
+    REACTIVEOBJCB00000000165 /* RACPassthroughSubscriber.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000165 /* RACPassthroughSubscriber.m */; };
+    REACTIVEOBJCB00000000167 /* NSObject+RACAppKitBindings.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000167 /* NSObject+RACAppKitBindings.m */; };
+    REACTIVEOBJCB00000000172 /* NSArray+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000172 /* NSArray+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000176 /* RACQueueScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000176 /* RACQueueScheduler.m */; };
+    REACTIVEOBJCB00000000178 /* NSText+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000178 /* NSText+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000179 /* RACKVOProxy.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000179 /* RACKVOProxy.m */; };
+    REACTIVEOBJCB00000000180 /* UISegmentedControl+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000180 /* UISegmentedControl+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000184 /* NSDictionary+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000184 /* NSDictionary+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000186 /* UITextField+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000186 /* UITextField+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000188 /* NSString+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000188 /* NSString+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000191 /* UIAlertView+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000191 /* UIAlertView+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000192 /* RACValueTransformer.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000192 /* RACValueTransformer.m */; };
+    REACTIVEOBJCB00000000194 /* UIGestureRecognizer+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000194 /* UIGestureRecognizer+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000197 /* NSInvocation+RACTypeParsing.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000197 /* NSInvocation+RACTypeParsing.m */; };
+    REACTIVEOBJCB00000000199 /* NSSet+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000199 /* NSSet+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000200 /* RACTestScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000200 /* RACTestScheduler.m */; };
+    REACTIVEOBJCB00000000201 /* UIRefreshControl+RACCommandSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000201 /* UIRefreshControl+RACCommandSupport.m */; };
+    REACTIVEOBJCB00000000202 /* RACReturnSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000202 /* RACReturnSignal.m */; };
+    REACTIVEOBJCB00000000206 /* UISlider+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000206 /* UISlider+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000208 /* UIControl+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000208 /* UIControl+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000211 /* NSString+RACKeyPathUtilities.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000211 /* NSString+RACKeyPathUtilities.m */; };
+    REACTIVEOBJCB00000000215 /* RACDisposable.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000215 /* RACDisposable.m */; };
+    REACTIVEOBJCB00000000216 /* UIButton+RACCommandSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000216 /* UIButton+RACCommandSupport.m */; };
+    REACTIVEOBJCB00000000220 /* UIActionSheet+RACSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000220 /* UIActionSheet+RACSignalSupport.m */; };
+    REACTIVEOBJCB00000000221 /* RACSerialDisposable.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000221 /* RACSerialDisposable.m */; };
+    REACTIVEOBJCB00000000226 /* NSObject+RACLifting.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000226 /* NSObject+RACLifting.m */; };
+    REACTIVEOBJCB00000000227 /* RACSubject.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000227 /* RACSubject.m */; };
+    REACTIVEOBJCB00000000228 /* NSObject+RACKVOWrapper.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000228 /* NSObject+RACKVOWrapper.m */; };
+    REACTIVEOBJCB00000000230 /* NSObject+RACSelectorSignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000230 /* NSObject+RACSelectorSignal.m */; };
+    REACTIVEOBJCB00000000231 /* RACSubscriber.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000231 /* RACSubscriber.m */; };
+    REACTIVEOBJCB00000000233 /* RACDelegateProxy.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000233 /* RACDelegateProxy.m */; };
+    REACTIVEOBJCB00000000236 /* RACEagerSequence.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000236 /* RACEagerSequence.m */; };
+    REACTIVEOBJCB00000000237 /* RACUnit.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000237 /* RACUnit.m */; };
+    REACTIVEOBJCB00000000239 /* RACCompoundDisposable.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000239 /* RACCompoundDisposable.m */; };
+    REACTIVEOBJCB00000000241 /* RACCommand.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000241 /* RACCommand.m */; };
+    REACTIVEOBJCB00000000244 /* RACEmptySignal.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000244 /* RACEmptySignal.m */; };
+    REACTIVEOBJCB00000000248 /* RACImmediateScheduler.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000248 /* RACImmediateScheduler.m */; };
+    REACTIVEOBJCB00000000252 /* RACTuple.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000252 /* RACTuple.m */; };
+    REACTIVEOBJCB00000000254 /* NSIndexSet+RACSequenceAdditions.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000254 /* NSIndexSet+RACSequenceAdditions.m */; };
+    REACTIVEOBJCB00000000255 /* NSControl+RACTextSignalSupport.m */ = {isa = PBXBuildFile; fileRef = REACTIVEOBJCM00000000255 /* NSControl+RACTextSignalSupport.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+    SRC000000000000000000M01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+    SRC000000000000000000H02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+    SRC000000000000000000M02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+    SRC0VC000000000000000H01 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+    SRC0VC000000000000000M01 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+    SRC0VC000000000000000H02 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+    SRC0VC000000000000000M02 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };      
+<#list navigables as page>
+    SRC0VCNAV000000000000H${page?index?string?left_pad(2, "0")} /* ${objectivec.nameType(page.id)}ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ${objectivec.nameType(page.id)}ViewController.h; sourceTree = "<group>"; }; 
+    SRC0VCNAV000000000000M${page?index?string?left_pad(2, "0")} /* ${objectivec.nameType(page.id)}ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ${objectivec.nameType(page.id)}ViewController.m; sourceTree = "<group>"; }; 
+</#list>   
+		OTHERS000000000000README /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		AAD1D9302B94F2FE0023ACDB /* ${app.name}.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ${app.name}.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD1D9362B94F2FE0023ACDB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		AAD1D9372B94F2FE0023ACDB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		AAD1D9392B94F2FE0023ACDB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AAD1D93A2B94F2FE0023ACDB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AAD1D93D2B94F2FE0023ACDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AAD1D93F2B94F3000023ACDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAD1D9422B94F3000023ACDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AAD1D9442B94F3000023ACDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF00000000000000000H0000 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.h; sourceTree = "<group>"; };
+		AF00000000000000000M0001 /* Screens.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Screens.m; sourceTree = "<group>"; };
+		AF00000000000000000H0001 /* Screens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Screens.h; sourceTree = "<group>"; };
+		AF00000000000000000M0002 /* Themes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Themes.m; sourceTree = "<group>"; };
+		AF00000000000000000H0002 /* Themes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Themes.h; sourceTree = "<group>"; };
+<#list app.usecases as usecase>
+	<#assign page = usecase.page>
+		AF000000000000000M${(usecase?index + 1)?string?left_pad(6, '0')} /* ${objc.nameType(page.id)}.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ${objc.nameType(page.id)}ViewController.m; sourceTree = "<group>"; };
+		AF000000000000000H${(usecase?index + 1)?string?left_pad(6, '0')} /* ${objc.nameType(page.id)}.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ${objc.nameType(page.id)}ViewController.h; sourceTree = "<group>"; };
+</#list>
+
+		/*************************/
+		/* NYAlertViewController */
+		/*************************/
+		08624A0321740FA100EB9252 /* NYAlertAction+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NYAlertAction+Private.h"; sourceTree = "<group>"; };
+		088768A421572405004F427E /* NYAlertViewPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewPresentationController.h; sourceTree = "<group>"; };
+		088768A521572405004F427E /* NYAlertViewPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertViewPresentationController.m; sourceTree = "<group>"; };
+		088768A7215725FC004F427E /* NYAlertViewPresentationAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewPresentationAnimationController.h; sourceTree = "<group>"; };
+		088768A8215725FC004F427E /* NYAlertViewPresentationAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertViewPresentationAnimationController.m; sourceTree = "<group>"; };
+		088768AA2157263F004F427E /* NYAlertViewDismissalAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewDismissalAnimationController.h; sourceTree = "<group>"; };
+		088768AB2157263F004F427E /* NYAlertViewDismissalAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertViewDismissalAnimationController.m; sourceTree = "<group>"; };
+		088768AD215726E3004F427E /* NYAlertViewControllerTransitionStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewControllerTransitionStyle.h; sourceTree = "<group>"; };
+		088768B1215727E9004F427E /* NYAlertAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertAction.h; sourceTree = "<group>"; };
+		088768B2215727E9004F427E /* NYAlertAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertAction.m; sourceTree = "<group>"; };
+		088768B5215733AA004F427E /* NYAlertViewButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewButton.h; sourceTree = "<group>"; };
+		088768B6215733AA004F427E /* NYAlertViewButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertViewButton.m; sourceTree = "<group>"; };
+		08969969215F13FD00009662 /* UIView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		0896996A215F13FD00009662 /* UIView+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		0896996F215F1D5D00009662 /* NYAlertTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertTextView.h; sourceTree = "<group>"; };
+		08969970215F1D5D00009662 /* NYAlertTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertTextView.m; sourceTree = "<group>"; };
+		08969972215F1F0E00009662 /* NYAlertViewControllerConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertViewControllerConfiguration.h; sourceTree = "<group>"; };
+		08969973215F1F0E00009662 /* NYAlertViewControllerConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertViewControllerConfiguration.m; sourceTree = "<group>"; };
+		08AF286F216A758A0070DA8E /* NYAlertActionConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYAlertActionConfiguration.h; sourceTree = "<group>"; };
+		08AF2870216A758A0070DA8E /* NYAlertActionConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYAlertActionConfiguration.m; sourceTree = "<group>"; };
+
+		/**************/
+		/* FSCalendar */
+		/**************/
+		30B0BABF1B8D8E22004B9476 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		30B0BAC01B8D8E22004B9476 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FSCalendar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		30B0BAC11B8D8E22004B9476 /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		30B0BAC21B8D8E22004B9476 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		30B0BAC31B8D8E22004B9476 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FSCalendarCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		30B0BAC41B8D8E22004B9476 /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		30B0BAC51B8D8E22004B9476 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		30B0BAC61B8D8E22004B9476 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		30B0BAC71B8D8E22004B9476 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		30CEF8FE1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		30CEF8FF1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		30DBE3C21DC641AD005A22B7 /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		30DBE3C31DC641AD005A22B7 /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		30F4C90D1E07C12B00D2EC4D /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		30F4C90E1E07C12B00D2EC4D /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		301F79C91DFD39E700D8631E /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		301F79CA1DFD39E700D8631E /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		30FCB3941BAAD112002B87AD /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		30FCB3951BAAD112002B87AD /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		50F2ADE6216D954A00CC481F /* FSCalendarSeparatorDecorationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSCalendarSeparatorDecorationView.h; sourceTree = "<group>"; };
+		50F2ADE7216D954A00CC481F /* FSCalendarSeparatorDecorationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSCalendarSeparatorDecorationView.m; sourceTree = "<group>"; };
+		EEC9C0371BDC9E7000383A07 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		EEC9C0381BDC9E7000383A07 /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		3095398D1C38D66C00BD37AA /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		3095398E1C38D66C00BD37AA /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		3055B1C01DA9323A002AFA13 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		3055B1C11DA9323A002AFA13 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		309225381B905C4300123031 /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		309225391B905C4300123031 /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		30A495521DCAD9E6000B2F31 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		30A495531DCAD9E6000B2F31 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+
+		/*************/
+    /* MJREFRESH */
+    /*************/
+    MJREFRESHM00000000000001 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000002 /* UICollectionViewLayout+MJRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewLayout+MJRefresh.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000003 /* MJRefreshConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConst.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000004 /* MJRefreshConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConfig.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000005 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000006 /* MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000007 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000008 /* UIView+MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000009 /* MJRefreshComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshComponent.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000010 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000011 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoStateFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000012 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000013 /* MJRefreshNormalTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000014 /* MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000015 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000016 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackGifFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000017 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackStateFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000018 /* UIView+MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000019 /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackNormalFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000020 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoNormalFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000021 /* MJRefreshTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000022 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000023 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshGifHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000024 /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoGifFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000025 /* MJRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000026 /* MJRefreshFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000027 /* MJRefreshConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConfig.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000028 /* MJRefreshConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConst.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000029 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000030 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000031 /* MJRefreshStateTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000032 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000033 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000034 /* MJRefreshConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConfig.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000035 /* MJRefreshConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshConst.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000036 /* UICollectionViewLayout+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewLayout+MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000037 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000038 /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000039 /* UIView+MJExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000040 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackGifFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000041 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackStateFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000042 /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackNormalFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000043 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackGifFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000044 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackStateFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000045 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackNormalFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000046 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoStateFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000047 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoNormalFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000048 /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoGifFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000049 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoStateFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000050 /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoGifFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000051 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoNormalFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000052 /* MJRefreshNormalTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000053 /* MJRefreshStateTrailer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateTrailer.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000054 /* MJRefreshNormalTrailer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalTrailer.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000055 /* MJRefreshStateTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000056 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalHeader.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000057 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000058 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshGifHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000059 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshNormalHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000060 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshStateHeader.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000061 /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshGifHeader.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000062 /* MJRefreshFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000063 /* MJRefreshComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshComponent.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000064 /* MJRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshHeader.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000065 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000066 /* MJRefreshTrailer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshTrailer.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000067 /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000068 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshAutoFooter.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000069 /* MJRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshHeader.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000070 /* MJRefreshComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshComponent.m"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000071 /* MJRefreshFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHH00000000000072 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshBackFooter.h"; sourceTree = "<group>"; };
+    MJREFRESHM00000000000073 /* MJRefreshTrailer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshTrailer.m"; sourceTree = "<group>"; };
+
+		/***********/
+    /* MASONRY */
+    /***********/
+    MASONRYH0000000000000001 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASCompositeConstraint.h"; sourceTree = "<group>"; };
+    MASONRYM0000000000000002 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+    MASONRYH0000000000000003 /* MASConstraint+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000004 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASLayoutConstraint.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000005 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000006 /* MASConstraintMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASConstraintMaker.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000007 /* View+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000008 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000009 /* MASUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASUtilities.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000010 /* MASViewAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASViewAttribute.h"; sourceTree = "<group>"; };
+    MASONRYM0000000000000011 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+    MASONRYH0000000000000012 /* MASViewConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASViewConstraint.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000013 /* MASConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASConstraint.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000014 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+    MASONRYM0000000000000015 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASCompositeConstraint.m"; sourceTree = "<group>"; };
+    MASONRYM0000000000000016 /* MASConstraintMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASConstraintMaker.m"; sourceTree = "<group>"; };
+    MASONRYM0000000000000017 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASLayoutConstraint.m"; sourceTree = "<group>"; };
+    MASONRYM0000000000000018 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+    MASONRYM0000000000000019 /* View+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+    MASONRYH0000000000000020 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+    MASONRYH0000000000000021 /* Masonry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Masonry.h"; sourceTree = "<group>"; };
+    MASONRYM0000000000000022 /* MASConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASConstraint.m"; sourceTree = "<group>"; };
+    MASONRYH0000000000000023 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+    MASONRYM0000000000000024 /* MASViewConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASViewConstraint.m"; sourceTree = "<group>"; };
+    MASONRYM0000000000000025 /* MASViewAttribute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MASViewAttribute.m"; sourceTree = "<group>"; };
+
+		/***********/
+    /* CHARTS */
+    /***********/
+		CHARTSP00000000000000001 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAD1D92D2B94F2FE0023ACDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAD1D9272B94F2FE0023ACDB = {
+			isa = PBXGroup;
+			children = (
+				SRC000000000000000000000 /* Sources */,
+				VENDORS00000000000000000 /* Vendors */,
+				AAD1D9312B94F2FE0023ACDB /* Products */,
+				OTHERS000000000000README /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		AAD1D9312B94F2FE0023ACDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1D9302B94F2FE0023ACDB /* ${app.name}.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		VENDORS00000000000000000 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				VENDORS00010001000000000 /* NYAlertViewController */,
+				VENDORS00010002000000000 /* FSCalendar */,
+				MJREFRESHD00000000000008 /* MJRefresh */,
+				MASONRYD0000000000000001 /* Masonry */,
+				CHARTSP00000000000000001 /* Charts */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		VENDORS00010001000000000 /* NYAlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				VENDORS00010001000100000 /* Private */,
+				088768AD215726E3004F427E /* NYAlertViewControllerTransitionStyle.h */,
+				0EF9AD8F1B5B1785000C7F1D /* NYAlertViewController.h */,
+				0EF9AD901B5B1785000C7F1D /* NYAlertViewController.m */,
+				08969972215F1F0E00009662 /* NYAlertViewControllerConfiguration.h */,
+				08969973215F1F0E00009662 /* NYAlertViewControllerConfiguration.m */,
+				088768B1215727E9004F427E /* NYAlertAction.h */,
+				088768B2215727E9004F427E /* NYAlertAction.m */,
+				08AF286F216A758A0070DA8E /* NYAlertActionConfiguration.h */,
+				08AF2870216A758A0070DA8E /* NYAlertActionConfiguration.m */,
+			);
+			path = NYAlertViewController;
+			sourceTree = "<group>";
+		};
+		VENDORS00010001000100000 /* NYAlertViewController / Private */ = {
+			isa = PBXGroup;
+			children = (
+				0896996F215F1D5D00009662 /* NYAlertTextView.h */,
+				08969970215F1D5D00009662 /* NYAlertTextView.m */,
+				0EF9AD8D1B5B1785000C7F1D /* NYAlertView.h */,
+				0EF9AD8E1B5B1785000C7F1D /* NYAlertView.m */,
+				088768B5215733AA004F427E /* NYAlertViewButton.h */,
+				088768B6215733AA004F427E /* NYAlertViewButton.m */,
+				088768A421572405004F427E /* NYAlertViewPresentationController.h */,
+				088768A521572405004F427E /* NYAlertViewPresentationController.m */,
+				088768A7215725FC004F427E /* NYAlertViewPresentationAnimationController.h */,
+				088768A8215725FC004F427E /* NYAlertViewPresentationAnimationController.m */,
+				088768AA2157263F004F427E /* NYAlertViewDismissalAnimationController.h */,
+				088768AB2157263F004F427E /* NYAlertViewDismissalAnimationController.m */,
+				08624A0321740FA100EB9252 /* NYAlertAction+Private.h */,
+				08969969215F13FD00009662 /* UIView+Additions.h */,
+				0896996A215F13FD00009662 /* UIView+Additions.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		VENDORS00010002000000000 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				30B0BABF1B8D8E22004B9476 /* FSCalendar.h */,
+				30B0BAC01B8D8E22004B9476 /* FSCalendar.m */,
+				30B0BAC11B8D8E22004B9476 /* FSCalendarAppearance.h */,
+				30B0BAC21B8D8E22004B9476 /* FSCalendarAppearance.m */,
+				30DBE3C21DC641AD005A22B7 /* FSCalendarCalculator.h */,
+				30DBE3C31DC641AD005A22B7 /* FSCalendarCalculator.m */,
+				30B0BAC31B8D8E22004B9476 /* FSCalendarCell.h */,
+				30B0BAC41B8D8E22004B9476 /* FSCalendarCell.m */,
+				EEC9C0371BDC9E7000383A07 /* FSCalendarCollectionView.h */,
+				EEC9C0381BDC9E7000383A07 /* FSCalendarCollectionView.m */,
+				3095398D1C38D66C00BD37AA /* FSCalendarCollectionViewLayout.h */,
+				3095398E1C38D66C00BD37AA /* FSCalendarCollectionViewLayout.m */,
+				50F2ADE6216D954A00CC481F /* FSCalendarSeparatorDecorationView.h */,
+				50F2ADE7216D954A00CC481F /* FSCalendarSeparatorDecorationView.m */,
+				30B0BAC61B8D8E22004B9476 /* FSCalendarHeaderView.h */,
+				30B0BAC71B8D8E22004B9476 /* FSCalendarHeaderView.m */,
+				30A495521DCAD9E6000B2F31 /* FSCalendarWeekdayView.h */,
+				30A495531DCAD9E6000B2F31 /* FSCalendarWeekdayView.m */,
+				30FCB3941BAAD112002B87AD /* FSCalendarStickyHeader.h */,
+				30FCB3951BAAD112002B87AD /* FSCalendarStickyHeader.m */,
+				30CEF8FE1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.h */,
+				30CEF8FF1C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m */,
+				301F79C91DFD39E700D8631E /* FSCalendarDelegationProxy.h */,
+				301F79CA1DFD39E700D8631E /* FSCalendarDelegationProxy.m */,
+				30F4C90D1E07C12B00D2EC4D /* FSCalendarDelegationFactory.h */,
+				30F4C90E1E07C12B00D2EC4D /* FSCalendarDelegationFactory.m */,
+				3055B1C01DA9323A002AFA13 /* FSCalendarExtensions.h */,
+				3055B1C11DA9323A002AFA13 /* FSCalendarExtensions.m */,
+				309225381B905C4300123031 /* FSCalendarConstants.h */,
+				309225391B905C4300123031 /* FSCalendarConstants.m */,
+				30B0BAC51B8D8E22004B9476 /* FSCalendarDynamicHeader.h */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		SRC000000000000000000000 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				SRC0VC000000000000000000 /* VC */,
+				SRCCMN000000000000000000 /* Common */,
+				SRC000000000000000000H02 /* AppDelegate.h */,
+				SRC000000000000000000M02 /* AppDelegate.m */,
+				SRC000000000000000000M01 /* main.m */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		SRC0VC000000000000000000 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+			  SRC0VCCMN000000000000000 /* Common */,
+        SRC0VCNAV000000000000000 /* Navigable */,
+        SRC0VC0PG000000000000000 /* Page */,	
+        SRC0VC000000000000000H01 /* MainViewController.h */,  
+        SRC0VC000000000000000M01 /* MainViewController.m */,  
+        SRC0VC000000000000000H02 /* WelcomeViewController.h */,  
+        SRC0VC000000000000000M02 /* WelcomeViewController.m */,  
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		
+		SRC0VCCMN000000000000000 /* VC/Common */ = {
+      isa = PBXGroup;
+      children = (
+      );
+      path = Common;
+      sourceTree = "<group>";
+    };
+    SRC0VCNAV000000000000000 /* VC/Navigable */ = {
+      isa = PBXGroup;
+      children = (
+<#list navigables as page>
+        SRC0VCNAV000000000000H${page?index?string?left_pad(2, "0")}, /* ${objectivec.nameType(page.id)}ViewController.h */
+        SRC0VCNAV000000000000M${page?index?string?left_pad(2, "0")}, /* ${objectivec.nameType(page.id)}ViewController.m */
+</#list>      
+      );
+      path = Navigable;
+      sourceTree = "<group>";
+    };
+    SRC0VC0PG000000000000000 /* VC/Page */ = {
+      isa = PBXGroup;
+      children = (
+<#list modules?keys as module>
+        SRC0VC0PG${module?upper_case?left_pad(6, "0")}000000000, /* ${module?upper_case} */
+</#list>       
+      );
+      path = Page;
+      sourceTree = "<group>";
+    };
+<#list modules?keys as module>
+    SRC0VC0PG${module?upper_case?left_pad(6, "0")}000000000 /* VC/Page/${module?upper_case} */ = {
+      isa = PBXGroup;
+      children = (     
+      );
+      path = ${module?upper_case};
+      sourceTree = "<group>";
+    };    
+</#list>  
+<#list app.pages as page>
+</#list>
+		
+		SRCCMN000000000000000000 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				SRCCMN000000000000000H01 /* Styles.h */,
+				SRCCMN000000000000000M01 /* Styles.m */,
+				SRCCMN000000000000000H02 /* SDK.h */,
+				SRCCMN000000000000000M02 /* SDK.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+
+		/*************/
+    /* MJREFRESH */
+    /*************/
+    MJREFRESHD00000000000003 /* Footer */ = {
+      isa = PBXGroup;
+      path = Footer;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHD00000000000001 /* Back */,
+        MJREFRESHD00000000000002 /* Auto */,
+      );
+    };
+    MJREFRESHD00000000000002 /* Auto */ = {
+      isa = PBXGroup;
+      path = Auto;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHH00000000000046 /* MJRefreshAutoStateFooter.h */,
+        MJREFRESHH00000000000047 /* MJRefreshAutoNormalFooter.h */,
+        MJREFRESHH00000000000048 /* MJRefreshAutoGifFooter.h */,
+        MJREFRESHM00000000000049 /* MJRefreshAutoStateFooter.m */,
+        MJREFRESHM00000000000050 /* MJRefreshAutoGifFooter.m */,
+        MJREFRESHM00000000000051 /* MJRefreshAutoNormalFooter.m */,
+      );
+    };
+    MJREFRESHD00000000000008 /* MJRefresh */ = {
+      isa = PBXGroup;
+      path = MJRefresh;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHM00000000000001 /* UIScrollView+MJRefresh.m */,
+        MJREFRESHM00000000000002 /* UICollectionViewLayout+MJRefresh.m */,
+        MJREFRESHM00000000000003 /* MJRefreshConst.m */,
+        MJREFRESHM00000000000004 /* MJRefreshConfig.m */,
+        MJREFRESHH00000000000005 /* UIScrollView+MJExtension.h */,
+        MJREFRESHH00000000000006 /* MJRefresh.h */,
+        MJREFRESHH00000000000007 /* NSBundle+MJRefresh.h */,
+        MJREFRESHH00000000000008 /* UIView+MJExtension.h */,
+        MJREFRESHM00000000000033 /* UIScrollView+MJExtension.m */,
+        MJREFRESHH00000000000034 /* MJRefreshConfig.h */,
+        MJREFRESHH00000000000035 /* MJRefreshConst.h */,
+        MJREFRESHH00000000000036 /* UICollectionViewLayout+MJRefresh.h */,
+        MJREFRESHH00000000000037 /* UIScrollView+MJRefresh.h */,
+        MJREFRESHM00000000000038 /* NSBundle+MJRefresh.m */,
+        MJREFRESHM00000000000039 /* UIView+MJExtension.m */,
+        MJREFRESHD00000000000006 /* Custom */,
+        MJREFRESHD00000000000007 /* Base */,
+      );
+    };
+    MJREFRESHD00000000000001 /* Back */ = {
+      isa = PBXGroup;
+      path = Back;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHH00000000000040 /* MJRefreshBackGifFooter.h */,
+        MJREFRESHH00000000000041 /* MJRefreshBackStateFooter.h */,
+        MJREFRESHH00000000000042 /* MJRefreshBackNormalFooter.h */,
+        MJREFRESHM00000000000043 /* MJRefreshBackGifFooter.m */,
+        MJREFRESHM00000000000044 /* MJRefreshBackStateFooter.m */,
+        MJREFRESHM00000000000045 /* MJRefreshBackNormalFooter.m */,
+      );
+    };
+    MJREFRESHD00000000000005 /* Header */ = {
+      isa = PBXGroup;
+      path = Header;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHM00000000000056 /* MJRefreshNormalHeader.m */,
+        MJREFRESHH00000000000057 /* MJRefreshStateHeader.h */,
+        MJREFRESHH00000000000058 /* MJRefreshGifHeader.h */,
+        MJREFRESHH00000000000059 /* MJRefreshNormalHeader.h */,
+        MJREFRESHM00000000000060 /* MJRefreshStateHeader.m */,
+        MJREFRESHM00000000000061 /* MJRefreshGifHeader.m */,
+      );
+    };
+    MJREFRESHD00000000000007 /* Base */ = {
+      isa = PBXGroup;
+      path = Base;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHM00000000000062 /* MJRefreshFooter.m */,
+        MJREFRESHH00000000000063 /* MJRefreshComponent.h */,
+        MJREFRESHM00000000000064 /* MJRefreshHeader.m */,
+        MJREFRESHH00000000000065 /* MJRefreshAutoFooter.h */,
+        MJREFRESHH00000000000066 /* MJRefreshTrailer.h */,
+        MJREFRESHM00000000000067 /* MJRefreshBackFooter.m */,
+        MJREFRESHM00000000000068 /* MJRefreshAutoFooter.m */,
+        MJREFRESHH00000000000069 /* MJRefreshHeader.h */,
+        MJREFRESHM00000000000070 /* MJRefreshComponent.m */,
+        MJREFRESHH00000000000071 /* MJRefreshFooter.h */,
+        MJREFRESHH00000000000072 /* MJRefreshBackFooter.h */,
+        MJREFRESHM00000000000073 /* MJRefreshTrailer.m */,
+      );
+    };
+    MJREFRESHD00000000000006 /* Custom */ = {
+      isa = PBXGroup;
+      path = Custom;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHD00000000000003 /* Footer */,
+        MJREFRESHD00000000000004 /* Trailer */,
+        MJREFRESHD00000000000005 /* Header */,
+      );
+    };
+    MJREFRESHD00000000000004 /* Trailer */ = {
+      isa = PBXGroup;
+      path = Trailer;
+      sourceTree = "<group>";
+      children = (
+        MJREFRESHH00000000000052 /* MJRefreshNormalTrailer.h */,
+        MJREFRESHM00000000000053 /* MJRefreshStateTrailer.m */,
+        MJREFRESHM00000000000054 /* MJRefreshNormalTrailer.m */,
+        MJREFRESHH00000000000055 /* MJRefreshStateTrailer.h */,
+      );
+    };
+		/***********/
+    /* MASONRY */
+    /***********/
+    MASONRYD0000000000000001 /* Masonry */ = {
+      isa = PBXGroup;
+      path = Masonry;
+      sourceTree = "<group>";
+      children = (
+        MASONRYH0000000000000001 /* MASCompositeConstraint.h */,
+        MASONRYM0000000000000002 /* NSLayoutConstraint+MASDebugAdditions.m */,
+        MASONRYH0000000000000003 /* MASConstraint+Private.h */,
+        MASONRYH0000000000000004 /* MASLayoutConstraint.h */,
+        MASONRYH0000000000000005 /* NSArray+MASShorthandAdditions.h */,
+        MASONRYH0000000000000006 /* MASConstraintMaker.h */,
+        MASONRYH0000000000000007 /* View+MASAdditions.h */,
+        MASONRYH0000000000000008 /* NSArray+MASAdditions.h */,
+        MASONRYH0000000000000009 /* MASUtilities.h */,
+        MASONRYH0000000000000010 /* MASViewAttribute.h */,
+        MASONRYM0000000000000011 /* ViewController+MASAdditions.m */,
+        MASONRYH0000000000000012 /* MASViewConstraint.h */,
+        MASONRYH0000000000000013 /* MASConstraint.h */,
+        MASONRYH0000000000000014 /* NSLayoutConstraint+MASDebugAdditions.h */,
+        MASONRYM0000000000000015 /* MASCompositeConstraint.m */,
+        MASONRYM0000000000000016 /* MASConstraintMaker.m */,
+        MASONRYM0000000000000017 /* MASLayoutConstraint.m */,
+        MASONRYM0000000000000018 /* NSArray+MASAdditions.m */,
+        MASONRYM0000000000000019 /* View+MASAdditions.m */,
+        MASONRYH0000000000000020 /* View+MASShorthandAdditions.h */,
+        MASONRYH0000000000000021 /* Masonry.h */,
+        MASONRYM0000000000000022 /* MASConstraint.m */,
+        MASONRYH0000000000000023 /* ViewController+MASAdditions.h */,
+        MASONRYM0000000000000024 /* MASViewConstraint.m */,
+        MASONRYM0000000000000025 /* MASViewAttribute.m */,
+      );
+    };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAD1D92F2B94F2FE0023ACDB /* ${app.name} */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD1D9492B94F3000023ACDB /* Build configuration list for PBXNativeTarget "${app.name}" */;
+			buildPhases = (
+				AAD1D92C2B94F2FE0023ACDB /* Sources */,
+				AAD1D92D2B94F2FE0023ACDB /* Frameworks */,
+				AAD1D92E2B94F2FE0023ACDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ${app.name};
+			productName = ${app.name};
+			productReference = AAD1D9302B94F2FE0023ACDB /* ${app.name}.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAD1D9282B94F2FE0023ACDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AAD1D92F2B94F2FE0023ACDB = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = AAD1D92B2B94F2FE0023ACDB /* Build configuration list for PBXProject "${app.name}" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAD1D9272B94F2FE0023ACDB;
+			productRefGroup = AAD1D9312B94F2FE0023ACDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			projectReferences = (
+				{
+					ProjectRef = CHARTSP00000000000000001 /* Charts.xcodeproj */;
+				},
+			);
+			targets = (
+				AAD1D92F2B94F2FE0023ACDB /* ${app.name} */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAD1D92E2B94F2FE0023ACDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD1D9432B94F3000023ACDB /* LaunchScreen.storyboard in Resources */,
+				AAD1D9402B94F3000023ACDB /* Assets.xcassets in Resources */,
+				AAD1D93E2B94F2FE0023ACDB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAD1D92C2B94F2FE0023ACDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD1D93B2B94F2FE0023ACDB /* ViewController.m in Sources */,
+				AAD1D9352B94F2FE0023ACDB /* AppDelegate.m in Sources */,
+				AAD1D9462B94F3000023ACDB /* main.m in Sources */,
+				AAD1D9382B94F2FE0023ACDB /* SceneDelegate.m in Sources */,
+				AB00000000000000000M0001 /* Screens.m */,
+				AB00000000000000000M0002 /* Themes.m */,
+<#list app.usecases as usecase>
+	<#assign page = usecase.page>
+		    AB000000000000000M${(usecase?index + 1)?string?left_pad(6, '0')} /* ${objc.nameType(page.id)}ViewController.m */,
+</#list>				
+				/*************************/
+				/* NYAlertViewController */
+				/*************************/
+				0896996B215F13FD00009662 /* UIView+Additions.m in Sources */,
+				0EF9AD6D1B5B15C7000C7F1D /* DemoViewController.m in Sources */,
+				088768B3215727E9004F427E /* NYAlertAction.m in Sources */,
+				088768B7215733AA004F427E /* NYAlertViewButton.m in Sources */,
+				088768A9215725FC004F427E /* NYAlertViewPresentationAnimationController.m in Sources */,
+				0EF9AD6A1B5B15C7000C7F1D /* AppDelegate.m in Sources */,
+				088768AC2157263F004F427E /* NYAlertViewDismissalAnimationController.m in Sources */,
+				088768A621572405004F427E /* NYAlertViewPresentationController.m in Sources */,
+				0EF9AD671B5B15C7000C7F1D /* main.m in Sources */,
+				0EF9AD9C1B5B1785000C7F1D /* NYAlertView.m in Sources */,
+				08969974215F1F0E00009662 /* NYAlertViewControllerConfiguration.m in Sources */,
+				08AF2871216A758A0070DA8E /* NYAlertActionConfiguration.m in Sources */,
+				08969971215F1D5D00009662 /* NYAlertTextView.m in Sources */,
+				088768AE215726E3004F427E /* NYAlertViewControllerTransitionStyle.h in Sources */,
+				0EF9AD9D1B5B1785000C7F1D /* NYAlertViewController.m in Sources */,		
+				301F79CD1DFD39E700D8631E /* FSCalendarDelegationProxy.m in Sources */,
+				/**************/
+				/* FSCalendar */
+				/**************/
+				30F5D8561B9FC33400C1C201 /* FSCalendar.m in Sources */,
+				30B0BAF61B8D9AC1004B9476 /* FSCalendarAppearance.m in Sources */,
+				EEC9C03B1BDC9E7000383A07 /* FSCalendarCollectionView.m in Sources */,
+				30B0BAF71B8D9AC1004B9476 /* FSCalendarCell.m in Sources */,
+				30DBE3C61DC641AD005A22B7 /* FSCalendarCalculator.m in Sources */,
+				50F2ADEA216D954A00CC481F /* FSCalendarSeparatorDecorationView.m in Sources */,
+				30A495561DCAD9E6000B2F31 /* FSCalendarWeekdayView.m in Sources */,
+				30B0BAF81B8D9AC1004B9476 /* FSCalendarHeaderView.m in Sources */,
+				3092253C1B905C4300123031 /* FSCalendarConstants.m in Sources */,
+				3055B1C41DA9323A002AFA13 /* FSCalendarExtensions.m in Sources */,
+				309539911C38D66C00BD37AA /* FSCalendarCollectionViewLayout.m in Sources */,
+				30CEF9021C950C1F008EAFB1 /* FSCalendarTransitionCoordinator.m in Sources */,
+				30FCB3981BAAD112002B87AD /* FSCalendarStickyHeader.m in Sources */,
+				30F4C9111E07C12B00D2EC4D /* FSCalendarDelegationFactory.m in Sources */,
+				/*************/
+        /* MJREFRESH */
+        /*************/
+        MJREFRESHB00000000000001 /* UIScrollView+MJRefresh.m */,
+        MJREFRESHB00000000000002 /* UICollectionViewLayout+MJRefresh.m */,
+        MJREFRESHB00000000000003 /* MJRefreshConst.m */,
+        MJREFRESHB00000000000004 /* MJRefreshConfig.m */,
+        MJREFRESHB00000000000033 /* UIScrollView+MJExtension.m */,
+        MJREFRESHB00000000000038 /* NSBundle+MJRefresh.m */,
+        MJREFRESHB00000000000039 /* UIView+MJExtension.m */,
+        MJREFRESHB00000000000043 /* MJRefreshBackGifFooter.m */,
+        MJREFRESHB00000000000044 /* MJRefreshBackStateFooter.m */,
+        MJREFRESHB00000000000045 /* MJRefreshBackNormalFooter.m */,
+        MJREFRESHB00000000000049 /* MJRefreshAutoStateFooter.m */,
+        MJREFRESHB00000000000050 /* MJRefreshAutoGifFooter.m */,
+        MJREFRESHB00000000000051 /* MJRefreshAutoNormalFooter.m */,
+        MJREFRESHB00000000000053 /* MJRefreshStateTrailer.m */,
+        MJREFRESHB00000000000054 /* MJRefreshNormalTrailer.m */,
+        MJREFRESHB00000000000056 /* MJRefreshNormalHeader.m */,
+        MJREFRESHB00000000000060 /* MJRefreshStateHeader.m */,
+        MJREFRESHB00000000000061 /* MJRefreshGifHeader.m */,
+        MJREFRESHB00000000000062 /* MJRefreshFooter.m */,
+        MJREFRESHB00000000000064 /* MJRefreshHeader.m */,
+        MJREFRESHB00000000000067 /* MJRefreshBackFooter.m */,
+        MJREFRESHB00000000000068 /* MJRefreshAutoFooter.m */,
+        MJREFRESHB00000000000070 /* MJRefreshComponent.m */,
+        MJREFRESHB00000000000073 /* MJRefreshTrailer.m */,
+				/***********/
+        /* MASONRY */
+        /***********/
+        MASONRYB0000000000000002 /* NSLayoutConstraint+MASDebugAdditions.m */,
+        MASONRYB0000000000000011 /* ViewController+MASAdditions.m */,
+        MASONRYB0000000000000015 /* MASCompositeConstraint.m */,
+        MASONRYB0000000000000016 /* MASConstraintMaker.m */,
+        MASONRYB0000000000000017 /* MASLayoutConstraint.m */,
+        MASONRYB0000000000000018 /* NSArray+MASAdditions.m */,
+        MASONRYB0000000000000019 /* View+MASAdditions.m */,
+        MASONRYB0000000000000022 /* MASConstraint.m */,
+        MASONRYB0000000000000024 /* MASViewConstraint.m */,
+        MASONRYB0000000000000025 /* MASViewAttribute.m */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAD1D93C2B94F2FE0023ACDB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD1D93D2B94F2FE0023ACDB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AAD1D9412B94F3000023ACDB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD1D9422B94F3000023ACDB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAD1D9472B94F3000023ACDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AAD1D9482B94F3000023ACDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAD1D94A2B94F3000023ACDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6X9G3CYFJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = ./Sources;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.doublegsoft.projbase.${app.name};
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AAD1D94B2B94F3000023ACDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6X9G3CYFJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = ./Sources;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.doublegsoft.projbase.${app.name};
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAD1D92B2B94F2FE0023ACDB /* Build configuration list for PBXProject "${app.name}" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD1D9472B94F3000023ACDB /* Debug */,
+				AAD1D9482B94F3000023ACDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD1D9492B94F3000023ACDB /* Build configuration list for PBXNativeTarget "${app.name}" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD1D94A2B94F3000023ACDB /* Debug */,
+				AAD1D94B2B94F3000023ACDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAD1D9282B94F2FE0023ACDB /* Project object */;
+}

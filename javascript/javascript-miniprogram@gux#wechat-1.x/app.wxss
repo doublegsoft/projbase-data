@@ -1,0 +1,296 @@
+@import '/vendor/gux/gux.wxss';
+
+:root {
+  --screen-width: 100vw;
+  --screen-height: 100vh;
+  --padding: 10px;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+
+  --color-background: #04181f;
+  --color-backdrop: #20294C;
+  --color-primary: #5C98F1;
+  --color-error: #F35959;
+  --color-warning: #FAB246;
+  --color-success: #5CF76E;
+  --color-info: #469AF9;
+  --color-disabled: #445866;
+
+  --color-text-primary: #f3f3f3;
+  --color-text-secondary: #E8EFF3;
+  --color-text-tertiary: #96A0B4;
+  --color-text-info: #7ABEFF;
+  --color-text-success: #9CF7A7;
+  --color-text-warning: #FFC97B;
+  --color-text-error: #F89B9B;
+
+  --color-border-primary: #575758;
+  --color-border-secondary: #4C4C4C;
+  --color-border-tertiary: #303030;
+
+  --color-divider-primary: #303030;
+  --color-divider-secondary: #575758;
+
+  --color-fatal: #F2595E;
+  --color-critical: #FF7B5C;
+  --color-major: #F6A144;
+  --color-high: #ECC000;
+  --color-moderate: #03C7DD;
+  --color-low: #01CAA6;
+
+  --color-surface-primary: #04181F;
+  --color-surface-secondary: #0A1E2C;
+  --color-surface-tertiary: #032331;
+  --color-surface-error: #c30c0b;
+  --color-surface-warning: #a3671c;
+  --color-surface-success: #0CC221;
+  --color-surface-info: #0e53b3;
+
+  --color-grey-darker: #676B89;
+  --color-grey-dark: #C7CBDB;
+  --color-grey-default: #DDDFE9;
+  --color-grey-light: #DCE1E9;
+  --color-grey-lighter: #F0F1F4;
+  
+  --color-success-lighter: rgba(46, 125, 50, 0.1);
+  --color-error-lighter: rgba(211, 47, 47, 0.1);
+  --color-warning-lighter: rgba(188, 154, 3, 0.1);
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.color-error {
+  color: var(--color-error);
+}
+
+.color-error-light {
+  color: var(--color-error-light);
+}
+
+.color-success {
+  color: var(--color-success);
+}
+
+.color-success-light {
+  color: var(--color-success-light);
+}
+
+.color-warning {
+  color: var(--color-warning);
+}
+
+.color-warning-light {
+  color: var(--color-warning-light);
+}
+
+.color-info {
+  color: var(--color-info);
+}
+
+.color-info-light {
+  color: var(--color-info-light);
+}
+
+.color-background {
+  background-color: var(--color-background);
+}
+
+.color-divider {
+  border-color: var(--color-divider);
+}
+
+.color-border {
+  border-color: var(--color-border);
+}
+
+.color-surface {
+  background-color: var(--color-surface);
+}
+
+.color-surface-secondary {
+  background-color: var(--color-surface-secondary);
+}
+
+.color-fatal {
+  color: var(--color-fatal);
+}
+
+.color-critical {
+  color: var(--color-critical);
+}
+
+.color-major {
+  color: var(--color-major);
+}
+
+.color-high {
+  color: var(--color-high);
+}
+
+.color-moderate {
+  color: var(--color-moderate);
+}
+
+.color-low {
+  color: var(--color-low);
+}
+
+.color-text-primary {
+  color: var(--color-text-primary);
+}
+
+.color-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.color-text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.color-text-placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.color-text-disabled {
+  color: var(--color-text-disabled);
+}
+
+.color-text-inverse {
+  color: var(--color-text-inverse);
+}
+
+.color-text-secondary-inverse {
+  color: var(--color-text-secondary-inverse);
+}
+
+.color-text-tertiary-inverse {
+  color: var(--color-text-tertiary-inverse);
+}
+
+page {
+  --color-primary: #3a693a!important;
+  --color-primary-inverse: #a0d49b;
+  --color-primary-light: #8BBFFF;
+  --color-primary-dark: #1F4CB7;
+
+  --color-secondary: #52634f;
+  --color-tertiary: #39656b;
+
+  --color-success: #3BAA27!important;
+  --color-error: #ba1a1a!important;
+  --color-danger: #D81E7B!important;
+  --color-warning: #BC9A03!important;
+  --color-info: #017FB5!important;
+  --color-light: rgba(0, 0, 0, 0.2);
+
+  --color-text-primary: #181d17!important;
+  --color-text-primary-inverse: #eef2e9;
+  --color-text-secondary: #424940;
+  --color-text-tertiary: #72796f;
+
+  --color-text-disabled: #c2c9bd;
+
+  /*
+  ** 页面整体的背景
+  */
+  --color-background: #f7fbf1!important;
+
+  /*
+  ** 子元素表面的背景
+  */
+  --color-surface: #bbf0b5!important;
+  --color-surface-primary: #bbf0b5;
+  --color-surface-secondary: #d5e8cf;
+  --color-surface-tertiary: #bcebf1;
+  --color-surface-error: #ffdad6;
+  --color-surface-inverse: #2d322c;
+  --color-surface-light: #ffffff;
+
+  /*
+  ** 分隔线的颜色
+  */
+  --color-divider: rgba(126, 79, 79, 0.12);
+
+  /*
+  ** 边缘线的颜色
+  */
+  --color-border: rgba(0, 0, 0, 0.12);
+
+  --color-primary-light: #42a5f5;
+  --color-secondary-light: #ba68c8;
+  --color-success-light: #4caf50; 
+  --color-error-light: #ef5350;
+  
+  --color-warning-light: #ff9800;
+  --color-info-light: #03a9f4;
+
+  --color-primary-dark: #1565c0;
+  --color-secondary-dark: #7b1fa2;
+  --color-success-dark: #1b5e20;
+  --color-error-dark: #c62828;
+  --color-warning-dark: #e65100;
+  --color-info-dark: #01579b;
+
+  --color-text-primary-dark: #fff;
+  --color-text-secondary-dark: rgba(255, 255, 255, 0.7);
+  --color-text-disabled-dark: rgba(255, 255, 255, 0.5);
+  --color-background-dark: #121212;
+  --color-divider-dark: rgba(255, 255, 255, 0.12);
+
+  --color-success-lighter: rgba(46, 125, 50, 0.1);
+  --color-error-lighter: rgba(211, 47, 47, 0.1);
+  --color-warning-lighter: rgba(188, 154, 3, 0.1);
+}
+
+.page {
+  background: var(--color-background);
+  position: relative;
+}
+
+.page.navigable {
+  padding-bottom: 78px;
+}
+
+.search-bar {
+  display: flex;
+  padding: 8px 10px;
+  width: 90%;
+  height: 24px;
+  background: #F5F5F5;
+  border-radius: 16rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.05);
+}
+
+.search-bar .icon {
+  margin-right: 24rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.search-bar .placeholder {
+  color: #999999;
+  font-size: 14px;
+}
+
+.search-bar .icon {
+  margin-right: 24rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.search-bar .placeholder {
+  color: #999999;
+  font-size: 24rpx;
+}
+
+button.primary.outline {
+  height: 48px; 
+  background: white;
+  border: 3px solid var(--color-success);
+  border-radius: 9999px;
+  color: var(--color-success); 
+  line-height: 26px; 
+  font-size: 20px;
+}

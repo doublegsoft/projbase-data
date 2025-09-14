@@ -1,0 +1,141 @@
+/*
+** ──────────────────────────────────────────────────
+** ─██████████████─██████──██████─████████──████████─
+** ─██░░░░░░░░░░██─██░░██──██░░██─██░░░░██──██░░░░██─
+** ─██░░██████████─██░░██──██░░██─████░░██──██░░████─
+** ─██░░██─────────██░░██──██░░██───██░░░░██░░░░██───
+** ─██░░██─────────██░░██──██░░██───████░░░░░░████───
+** ─██░░██──██████─██░░██──██░░██─────██░░░░░░██─────
+** ─██░░██──██░░██─██░░██──██░░██───████░░░░░░████───
+** ─██░░██──██░░██─██░░██──██░░██───██░░░░██░░░░██───
+** ─██░░██████░░██─██░░██████░░██─████░░██──██░░████─
+** ─██░░░░░░░░░░██─██░░░░░░░░░░██─██░░░░██──██░░░░██─
+** ─██████████████─██████████████─████████──████████─
+** ──────────────────────────────────────────────────
+*/
+@import '../../gux.wxss';
+
+.title {
+  display: block;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #aaa;
+}
+
+.input_label {
+  font-size: 35rpx;
+  font-weight: bold;
+  margin-right: 5rpx;
+}
+
+.feedback {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 157rpx; */
+  width: 100%;
+  margin-bottom: -8px;
+}
+
+.clear {
+  width: 147rpx;
+  color: var(--color-error);
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.confirm {
+  width: 147rpx;
+  color: var(--color-success);
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.cancel {
+  width: 147rpx;
+  color: var(--color-error);
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  padding-left: 40rpx;
+  font-size: 35rpx;
+  background: #C5C9D0;
+}
+
+.content {
+  display: flex;
+  font-size: 35rpx;
+  line-height: 90rpx;
+  font-weight: 700;
+}
+
+.cursor-insert {
+  position: absolute;
+  top: 0rpx;
+  right: -1rpx;
+}
+
+.cursor {
+  width: 2rpx;
+  height: 48
+  rpx;
+  background: #666;
+  border-radius: 6rpx;
+  animation: twinkling 0.9s infinite;
+}
+
+@-webkit-keyframes twinkling {
+  0% {
+    background: #fff;
+  }
+
+  100% {
+    background: #666;
+  }
+}
+
+.default-content {
+  color: #999;
+  font-size: 38rpx;
+  font-weight: 600;
+}
+
+
+.keyboard {
+  height: 0;
+  width: 100%;
+  background:#C5C9D0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: height 0.3s;
+  z-index: 9999;
+}
+
+.keyboard.shown {
+  height: 490rpx;
+}
+
+.keys {
+  overflow: hidden;
+  padding: 4px;
+}
+
+.key {
+  margin: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 20px;
+  float: left;
+  height: 90rpx;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 90rpx;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-divider);
+}

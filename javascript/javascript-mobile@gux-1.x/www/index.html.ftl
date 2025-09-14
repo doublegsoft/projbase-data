@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="img/favicon.png">
+<title>GUX手机模拟器</title>
+</head>
+
+<body style="overflow:hidden;display:flex;align-items:center;justify-content:center;">  
+  <div>
+    <iframe id="application" frameborder="none" src="/mhtml/${app.name}/index.html" 
+            style="position:relative;z-index:1;">
+    </iframe>
+    <image id="background" src="img/sim/iphone.png" style="position:absolute;top:0;background:transparent;">
+  </div>
+</body>
+</html>
+<script>
+const WIDTH = 462;
+const HEIGHT = 900;
+const INNER_WIDTH = 445 - 15;
+const INNER_HEIGHT = 886 - 12;
+let background = document.getElementById('background');
+let application = document.getElementById('application');
+let height = window.innerHeight;
+let width = window.innerHeight * WIDTH / HEIGHT;
+let innerWidth = width * INNER_WIDTH / WIDTH;
+let innerHeight = height * INNER_HEIGHT / HEIGHT;
+
+background.style.width = width + 'px';
+background.style.height = height + 'px';
+background.style.left = 'calc(50% - ' + (width / 2) + 'px)';
+application.style.width = (innerWidth + 2) + 'px';
+application.style.height = innerHeight + 'px';
+application.style.top = 5 + 'px';
+application.style.borderRadius = '70px / 60px';// (50 * width / WIDTH) + 'px';
+</script>
+
