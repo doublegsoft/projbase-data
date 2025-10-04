@@ -27,13 +27,14 @@ set(${app.name?upper_case?replace('-', '_')}_SRC
 <#list dependencies as dep>
   <#if dep == "poco">
   "src/${app.name}-poco.c"
+  <#elseif dep == "sql">
+  "src/${app.name}-sql.c"
   </#if>  
 </#list>
 )
 
 include_directories(
   "src"
-  "include"
   "3rd/${r"${"}GFC${r"}"}/include"
   "3rd/${r"${"}ARGPARSE${r"}"}"
 )
