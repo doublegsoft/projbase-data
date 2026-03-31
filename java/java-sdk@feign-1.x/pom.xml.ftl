@@ -6,11 +6,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>${namespace}.${app.name}</groupId>
-  <artifactId>${app.name}-sdk</artifactId>
+  <artifactId>${artifact}</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>${app.name}-sdk</name>
+  <name>${artifact}</name>
   <description></description>
 
   <properties>
