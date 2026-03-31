@@ -3,8 +3,8 @@ ${java.license(license)}
 </#if>
 package ${namespace}.${app.name}.aop;
 
-import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 @Aspect
 @Component
-@RequiredArgsConstructor
 public class DuplicateSubmitAspect {
-
-  private final StringRedisTemplate redisTemplate;
+  
+  @Resource
+  private StringRedisTemplate redisTemplate;
 
   @Around("@annotation(prevent)")
   public Object around(ProceedingJoinPoint pjp,
@@ -34,7 +34,7 @@ public class DuplicateSubmitAspect {
     String token = request.getHeader("X-Request-Token");
 
     if (prevent.requireToken() && (token == null || token.isBlank())) {
-      throw new DuplicateSubmitException("Missing X-Request-Token header");
+      // TODO: throw new DuplicateSubmitException("Missing X-Request-Token header");
     }
 
     String key;
@@ -50,7 +50,7 @@ public class DuplicateSubmitAspect {
         prevent.expire(), TimeUnit.SECONDS);
 
     if (Boolean.FALSE.equals(success)) {
-      throw new DuplicateSubmitException("Duplicate submission");
+      // TODO: throw new DuplicateSubmitException("Duplicate submission");
     }
 
     return pjp.proceed();

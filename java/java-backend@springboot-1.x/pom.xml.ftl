@@ -30,6 +30,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-boot.version>2.7.18</spring-boot.version>
   </properties>
 
   <build>
@@ -85,8 +86,18 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+      <version>${r"${"}spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+      <version>${r"${"}spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>2.7.18</version>
+      <version>${r"${"}spring-boot.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.lucene</groupId>
