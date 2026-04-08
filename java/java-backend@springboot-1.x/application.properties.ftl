@@ -6,5 +6,6 @@ spring.jackson.default-property-inclusion=non_empty
 spring.http.encoding.charset=UTF-8
 spring.http.encoding.enabled=true 
 spring.http.encoding.force=true 
-# spring.sql.init.mode=always
+
+server.servlet.context-path=/api
 logging.level.${namespace}.${app.name}.dao=DEBUG
