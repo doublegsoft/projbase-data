@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import removeAttr from 'remove-attr'
 
 export default defineConfig({
   plugins: [
