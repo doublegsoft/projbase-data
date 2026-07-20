@@ -3,8 +3,7 @@
     "signingConfigs": [],
     "products": [
       {
-        "name": "${app.name}",
-        "signingConfig": "default",
+        "name": "default",
         "targetSdkVersion": "6.0.1(21)",
         "compatibleSdkVersion": "6.0.1(21)",
         "runtimeOS": "HarmonyOS",
@@ -27,28 +26,16 @@
   },
   "modules": [
     {
-      "name": "${app.name}",
+      "name": "default",
       "srcPath": "./entry",
       "targets": [
         {
-          "name": "${app.name}",
+          "name": "default",
           "applyToProducts": [
-            "${app.name}"
+            "default"
           ]
         }
       ]
     },
-    {
-      "name": "sdk",
-      "srcPath": "./sdk",
-      "targets": [
-        {
-          "name": "${app.name}",
-          "applyToProducts": [
-            "${app.name}"
-          ]
-        }
-      ]
-    }
   ]
 }

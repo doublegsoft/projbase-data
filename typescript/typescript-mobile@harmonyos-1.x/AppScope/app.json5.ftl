@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "${namespace}.${ts.nameNamespace(app.name)}",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:layered_image",
+    "label": "$string:app_name"
+  }
+}
