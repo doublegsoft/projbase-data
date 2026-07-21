@@ -112,6 +112,11 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>6.1.0</version>
+    </dependency>
+    <dependency>
       <groupId>com.github.jsqlparser</groupId>
       <artifactId>jsqlparser</artifactId>
       <version>5.3</version>

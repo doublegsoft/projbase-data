@@ -7,5 +7,8 @@ spring.http.encoding.charset=UTF-8
 spring.http.encoding.enabled=true 
 spring.http.encoding.force=true 
 
+pagehelper.rowBoundsWithCount=true
+pagehelper.offsetAsPageNum=false
+
 server.servlet.context-path=/api
 logging.level.${namespace}.${app.name}.dao=DEBUG
