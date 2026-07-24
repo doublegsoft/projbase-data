@@ -37,5 +37,17 @@
         }
       ]
     },
+    {
+      "name": "sdk",
+      "srcPath": "./sdk",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
   ]
 }
