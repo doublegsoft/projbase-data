@@ -113,8 +113,8 @@
     </dependency>
     <dependency>
       <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>6.1.0</version>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+      <version>1.4.6</version>
     </dependency>
     <dependency>
       <groupId>com.github.jsqlparser</groupId>
