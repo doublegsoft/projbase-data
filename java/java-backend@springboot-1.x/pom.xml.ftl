@@ -112,11 +112,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper-spring-boot-starter</artifactId>
-      <version>1.4.6</version>
-    </dependency>
-    <dependency>
       <groupId>com.github.jsqlparser</groupId>
       <artifactId>jsqlparser</artifactId>
       <version>5.3</version>
