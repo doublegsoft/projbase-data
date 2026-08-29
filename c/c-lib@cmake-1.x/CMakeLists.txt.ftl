@@ -4,7 +4,7 @@ ${base.license(license)}
 </#if>
 cmake_minimum_required(VERSION 3.16)
 
-project(MyCProject LANGUAGES C CXX)
+project(${app.name} LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -22,6 +22,26 @@ elseif (WIN32)
 else()
   message(FATAL_ERROR "Unsupported operating system: '${r"${CMAKE_SYSTEM_NAME}"}'. Configuration halted.")
 endif() 
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+  <#assign libs = thirdparty.libraries>
+
+################################################################################
+##                                                                            ##
+##${thirdparty.name?left_pad(((76 + thirdparty.name?length) / 2)?int)?right_pad(76)}##
+##                                                                            ##
+################################################################################
+set(${(thirdparty.name?upper_case + "_ROOT")?right_pad(32, " ")}"${r"${"}CMAKE_CURRENT_SOURCE_DIR}/3rd/${thirdparty.name}<#if thirdparty.version??>-${thirdparty.version}</#if>")
+set(${(thirdparty.name?upper_case + "_INCLUDE_DIR")?right_pad(32, " ")}"${r"${"}${thirdparty.name?upper_case}_ROOT}/include")
+set(${(thirdparty.name?upper_case + "_LIBRARY_DIR")?right_pad(32, " ")}"${r"${"}${thirdparty.name?upper_case}_ROOT}/${r"${"}BUILD}")
+<#list libs as lib>
+  <#if lib?index == 0>
+set(${(thirdparty.name?upper_case + "_LIBRARIES")?right_pad(32)}"${r"${"}${thirdparty.name?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
+  <#else>
+    ${""?right_pad(32)}"${r"${"}${thirdparty.name?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
+  </#if>
+</#list>
+</#list>
 
 set(${app.name?upper_case?replace('-', '_')}_SRC
 <#list helper.listFiles("src") as srcFile>
@@ -33,15 +53,39 @@ set(${app.name?upper_case?replace('-', '_')}_SRC
 
 include_directories(
   "src"
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+  ${r"${"}${thirdparty.name?upper_case + "_INCLUDE_DIR"}}
+</#list>    
+)
+
+link_directories(
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+  ${r"${"}${thirdparty.name?upper_case + "_LIBRARY_DIR"}}
+</#list>  
 )
 
 add_library(${app.name} STATIC ${r"${"}${app.name?upper_case?replace('-', '_')}_SRC${r"}"})
-add_library(${app.name}_shared SHARED ${r"${"}${app.name?upper_case?replace('-', '_')}_SRC${r"}"})
-set_target_properties(${app.name}_shared PROPERTIES OUTPUT_NAME ${app.name})
-
 target_link_libraries(${app.name} PRIVATE
-  
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+  ${r"${"}${thirdparty.name?upper_case + "_LIBRARIES"}}
+</#list>    
 )
+
+if (WIN32)
+elseif (APPLE)
+  add_library(${app.name}_shared SHARED ${r"${"}${app.name?upper_case?replace('-', '_')}_SRC${r"}"})
+  set_target_properties(${app.name}_shared PROPERTIES OUTPUT_NAME ${app.name})
+  target_link_libraries(${app.name}_shared PRIVATE
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+    ${r"${"}${thirdparty.name?upper_case + "_LIBRARIES"}}
+</#list>    
+  )
+elseif (UNIX)
+endif()
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
