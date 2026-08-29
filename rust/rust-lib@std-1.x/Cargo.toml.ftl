@@ -1,4 +1,9 @@
 [package]
 name = "${app.name}"
-version = "0.1.0"
-authors = ["Christian Gann <guo.guo.gan@gmail.com>"]
+version = "${version!"0.0.1"}"
+edition = "2024"
+
+[lib]
+name = "${app.name}"
+path = "src/lib.rs"
+crate-type = ["rlib", "staticlib"]

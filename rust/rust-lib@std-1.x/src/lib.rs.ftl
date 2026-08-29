@@ -1,8 +1,10 @@
 <#if license??>
 ${rust.license(license)}
 </#if>
-<#list dependencies as dep>
-pub mod ${dep};
+<#list helper.listFiles("src") as filename>
+  <#assign modname = filename?replace("src/", "")?replace(".rs", "")>
+  <#if modname == "lib"><#continue></#if>
+pub mod ${modname};
 </#list>
 
 
