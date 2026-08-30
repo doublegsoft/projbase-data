@@ -6,5 +6,3 @@ ${rust.license(license)}
   <#if modname == "lib"><#continue></#if>
 pub mod ${modname};
 </#list>
-
-
