@@ -43,6 +43,11 @@ set(${(thirdparty.name?upper_case + "_LIBRARIES")?right_pad(32)}"${r"${"}${third
 </#list>
 </#list>
 
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+add_subdirectory("${r"${"}${thirdparty.name?upper_case}_ROOT}" "${r"${"}${thirdparty.name?upper_case}_ROOT}/${r"${"}BUILD}")  
+</#list>
+
 set(${app.name?upper_case?replace('-', '_')}_SRC
 <#list helper.listFiles("src") as srcFile>
   <#if srcFile?ends_with(".c")>
@@ -86,6 +91,13 @@ elseif (APPLE)
   )
 elseif (UNIX)
 endif()
+
+add_dependencies(${app.name} 
+<#list helper.listThirdParties("3rd") as thirdparty>
+  <#if thirdparty.name == "googletest"><#continue></#if>
+  ${thirdparty.name}
+</#list>    
+)
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
