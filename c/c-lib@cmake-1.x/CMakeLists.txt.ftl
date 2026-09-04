@@ -31,21 +31,24 @@ endif()
 ##${thirdparty.name?left_pad(((76 + thirdparty.name?length) / 2)?int)?right_pad(76)}##
 ##                                                                            ##
 ################################################################################
-set(${(thirdparty.name?upper_case + "_ROOT")?right_pad(32, " ")}"${r"${"}CMAKE_CURRENT_SOURCE_DIR}/3rd/${thirdparty.name}<#if thirdparty.version??>-${thirdparty.version}</#if>")
-set(${(thirdparty.name?upper_case + "_INCLUDE_DIR")?right_pad(32, " ")}"${r"${"}${thirdparty.name?upper_case}_ROOT}/include")
-set(${(thirdparty.name?upper_case + "_LIBRARY_DIR")?right_pad(32, " ")}"${r"${"}${thirdparty.name?upper_case}_ROOT}/${r"${"}BUILD}")
-<#list libs as lib>
-  <#if lib?index == 0>
-set(${(thirdparty.name?upper_case + "_LIBRARIES")?right_pad(32)}"${r"${"}${thirdparty.name?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
-  <#else>
-    ${""?right_pad(32)}"${r"${"}${thirdparty.name?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
-  </#if>
-</#list>
+set(${(c.nameNamespace(thirdparty.name)?upper_case + "_ROOT")?right_pad(32)}"${r"${"}CMAKE_CURRENT_SOURCE_DIR}/3rd/${thirdparty.name}<#if thirdparty.version??>-${thirdparty.version}</#if>")
+set(${(c.nameNamespace(thirdparty.name)?upper_case + "_INCLUDE_DIR")?right_pad(32)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}"
+${""?right_pad(36)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}/include"
+${""?right_pad(36)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}/src"
+${""?right_pad(36)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}/${r"${"}BUILD}")
+set(${(c.nameNamespace(thirdparty.name)?upper_case + "_LIBRARY_DIR")?right_pad(32)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}/${r"${"}BUILD}")
+  <#list libs as lib>
+    <#if lib?index == 0>
+set(${(c.nameNamespace(thirdparty.name)?upper_case + "_LIBRARIES")?right_pad(32)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
+    <#else>
+    ${""?right_pad(32)}"${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_LIBRARY_DIR}/lib${lib}.a"<#if lib?index == libs?size - 1>)</#if>
+    </#if>
+  </#list>
 </#list>
 
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
-add_subdirectory("${r"${"}${thirdparty.name?upper_case}_ROOT}" "${r"${"}${thirdparty.name?upper_case}_ROOT}/${r"${"}BUILD}")  
+add_subdirectory("${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}" "${r"${"}${c.nameNamespace(thirdparty.name)?upper_case}_ROOT}/${r"${"}BUILD}")  
 </#list>
 
 set(${app.name?upper_case?replace('-', '_')}_SRC
@@ -60,14 +63,14 @@ include_directories(
   "src"
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
-  ${r"${"}${thirdparty.name?upper_case + "_INCLUDE_DIR"}}
-</#list>    
+  ${r"${"}${c.nameNamespace(thirdparty.name)?upper_case + "_INCLUDE_DIR"}}
+</#list>
 )
 
 link_directories(
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
-  ${r"${"}${thirdparty.name?upper_case + "_LIBRARY_DIR"}}
+  ${r"${"}${c.nameNamespace(thirdparty.name)?upper_case + "_LIBRARY_DIR"}}
 </#list>  
 )
 
@@ -75,7 +78,7 @@ add_library(${app.name} STATIC ${r"${"}${app.name?upper_case?replace('-', '_')}_
 target_link_libraries(${app.name} PRIVATE
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
-  ${r"${"}${thirdparty.name?upper_case + "_LIBRARIES"}}
+  ${r"${"}${c.nameNamespace(thirdparty.name)?upper_case + "_LIBRARIES"}}
 </#list>    
 )
 
@@ -86,7 +89,7 @@ elseif (APPLE)
   target_link_libraries(${app.name}_shared PRIVATE
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
-    ${r"${"}${thirdparty.name?upper_case + "_LIBRARIES"}}
+    ${r"${"}${c.nameNamespace(thirdparty.name)?upper_case + "_LIBRARIES"}}
 </#list>    
   )
 elseif (UNIX)
