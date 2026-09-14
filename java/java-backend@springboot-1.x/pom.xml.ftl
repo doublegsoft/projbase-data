@@ -195,6 +195,13 @@
       <artifactId>redisson</artifactId>
       <version>3.27.2</version>
     </dependency>
+<#list helper.parseThirdParties("3rd") as tp>
+    <dependency>
+      <groupId>${tp.group}</groupId>
+      <artifactId>${tp.name}</artifactId>
+      <version>${tp.version}</version>
+    </dependency>
+</#list>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
