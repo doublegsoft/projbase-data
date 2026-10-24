@@ -75,6 +75,7 @@ link_directories(
 )
 
 add_library(${app.name} STATIC ${r"${"}${app.name?upper_case?replace('-', '_')}_SRC${r"}"})
+target_compile_options(${app.name} PRIVATE -g -O0)
 target_link_libraries(${app.name} PRIVATE
 <#list helper.listThirdParties("3rd") as thirdparty>
   <#if thirdparty.name == "googletest"><#continue></#if>
@@ -116,6 +117,8 @@ add_executable(${app.name}_tests
   </#if>
 </#list>
 )
+
+target_compile_options(${app.name}_tests PRIVATE -g -O0)
 
 target_link_libraries(${app.name}_tests PRIVATE 
   ${app.name} 
