@@ -213,12 +213,6 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.8.9</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
 </project>
