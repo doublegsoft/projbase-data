@@ -195,6 +195,11 @@
       <artifactId>redisson</artifactId>
       <version>3.27.2</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.13.2</version>
+    </dependency>
 <#list helper.parseThirdParties("3rd") as tp>
     <dependency>
       <groupId>${tp.group}</groupId>
