@@ -21,7 +21,7 @@ SOURCES += \
 HEADERS += \
 <#list helper.listFiles("src") as filepath>
   <#if filepath?ends_with(".hpp") && !filepath?ends_with("error.hpp")>
-  ${filepath} \
+  src/${filepath} \
   </#if>
 </#list>
   src/${namespace}-error.hpp
