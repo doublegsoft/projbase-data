@@ -11,7 +11,8 @@
   "dependencies": {
     "vue": "^3.5.34",
     "vue-router": "^4.4.0",
-    "echarts": "^6.1.0"
+    "echarts": "^6.1.0",
+    "bpmn-js": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.6",

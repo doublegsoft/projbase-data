@@ -10,6 +10,9 @@ macx {
   QMAKE_CXXFLAGS += -Wno-error=implicit-function-declaration -Wno-implicit-function-declaration
 }
 
+INCLUDEPATH += src
+
+
 SOURCES += \
 <#list helper.listFiles("src") as filepath>
   <#if filepath?ends_with(".cpp") && !filepath?ends_with("main.cpp")>
