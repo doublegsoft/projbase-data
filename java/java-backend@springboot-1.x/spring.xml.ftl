@@ -34,6 +34,10 @@
     <property name="username" value="root"/>
     <property name="password" value="ganguo"/>
   </bean-->  
+  <!--bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="org.sqlite.JDBC"/>
+    <property name="url" value="jdbc:sqlite:/Users/christian/Downloads/${app.name}.db?journal_mode=WAL&amp;busy_timeout=5000"/>
+  </bean-->
 
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"/>
